@@ -2,14 +2,14 @@ import re
 
 
 def dps():
-    damage =         input('Damage:                    ')
-    add_damage =     input('Additional damage (%):     ')
-    rate =     float(input('Fire rate:                 '))
-    add_rate =       input('Additional fire rate (%):  ')
-    reload_ =  float(input('Reload time:               '))
-    add_reload =     input('Improved reload time (%):  ')
+    damage = input('Damage:                    ')
+    add_damage = input('Additional damage (%):     ')
+    rate = float(input('Fire rate:                 '))
+    add_rate = input('Additional fire rate (%):  ')
+    reload_ = float(input('Reload time:               '))
+    add_reload = input('Improved reload time (%):  ')
     mag_size = float(input('Magazine size:             '))
-    ammo_shot =      input('Ammo per shot:             ')
+    ammo_shot = input('Ammo per shot:             ')
 
     try:
         damage = float(damage)
