@@ -1,5 +1,9 @@
 from kivymd.app import MDApp
 from calculator import calculate_dps
+from kivy.core.window import Window
+
+size = 35
+Window.size = (size*9, size*16)
 
 
 class DPSCalculatorApp(MDApp):
