@@ -1,14 +1,16 @@
-import re
+import regex
 
 
 def calculate_dps(damage=0, damage_bonus=0, f_rate=0, f_rate_bonus=0,
                   reload_t=0, reload_t_bonus=0, mag_size=0, ammo_per_shot=1):
 
     try:
+        if damage == '':
+            damage = 0
         damage = float(damage)
     except ValueError:
-        pattern = re.compile(r'x')
-        damage_num = re.split(pattern, damage)
+        pattern = regex.compile(r'x')
+        damage_num = regex.split(pattern, damage)
         damage = float(damage_num[0]) * float(damage_num[1])
     try:
         damage_bonus = float(damage_bonus)
@@ -26,9 +28,19 @@ def calculate_dps(damage=0, damage_bonus=0, f_rate=0, f_rate_bonus=0,
         ammo_per_shot = float(ammo_per_shot)
     except ValueError:
         ammo_per_shot = 1
-    f_rate = float(f_rate)
-    reload_t = float(reload_t)
-    mag_size = float(mag_size)
+
+    if f_rate == '':
+        f_rate = 1
+    else:
+        f_rate = float(f_rate)
+    if reload_t == '':
+        reload_t = 1
+    else:
+        reload_t = float(reload_t)
+    if mag_size == '':
+        mag_size = 1
+    else:
+        mag_size = float(mag_size)
 
     damage_total = damage + (damage * damage_bonus / 100)
     f_rate_total = f_rate + (f_rate * f_rate_bonus / 100)

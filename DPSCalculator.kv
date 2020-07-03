@@ -1,0 +1,161 @@
+#:kivy 1.11.1
+
+
+Screen:
+    canvas.before:
+        Color:
+            rgba: (18/255.0, 18/255.0, 18/255.0, 1)
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    NavigationLayout:
+        ScreenManager:
+            Screen:
+                BoxLayout:
+                    orientation: 'vertical'
+
+                    MDToolbar:
+                        title: 'DPS Calculator'
+                        left_action_items: [['menu', lambda _: nav_drawer.set_state('open')]]
+                        right_action_items: [['language-python', lambda _: app.no_action()]]
+                        elevation: 10
+                        md_bg_color: (30/255.0, 30/255.0, 30/255.0, 1)
+                        
+                    ScrollView:
+                        MDList:
+
+                            TwoLineListItem:
+                                MDTextField:
+                                    id: tf_damage
+                                    required: True
+                                    mode: 'rectangle'
+                                    hint_text: 'Damage'
+                                    helper_text: 'please enter a value'
+                                    helper_text_mode: 'on_error'
+                                    pos_hint: {'center_x': 0.3, 'center_y': 0.55}
+                                    size_hint: 0.4, None
+                                    color_mode: 'custom'
+                                    line_color_focus: (1, 1, 1, 1)
+                                    error_color: (207/255.0, 102/255.0, 121/255.0, 1)
+
+                                MDTextField:
+                                    id: tf_damage_bonus
+                                    mode: 'rectangle'
+                                    hint_text: 'Bonus (%)'
+                                    pos_hint: {'center_x': 0.75, 'center_y': 0.55}
+                                    size_hint: 0.3, None
+                                    color_mode: 'custom'
+                                    line_color_focus: (1, 1, 1, 1)
+                                    error_color: (207/255.0, 102/255.0, 121/255.0, 1)
+                        
+                            TwoLineListItem:
+                                MDTextField:
+                                    id: tf_f_rate
+                                    required: True
+                                    mode: 'rectangle'
+                                    hint_text: 'Fire rate'
+                                    helper_text: 'please enter a value'
+                                    helper_text_mode: 'on_error'
+                                    pos_hint: {'center_x': 0.3, 'center_y': 0.55}
+                                    size_hint: 0.4, None
+                                    color_mode: 'custom'
+                                    line_color_focus: (1, 1, 1, 1)
+                                    error_color: (207/255.0, 102/255.0, 121/255.0, 1)
+                        
+                                MDTextField:
+                                    id: tf_f_rate_bonus
+                                    mode: 'rectangle'
+                                    hint_text: 'Bonus (%)'
+                                    pos_hint: {'center_x': 0.75, 'center_y': 0.55}
+                                    size_hint: 0.3, None
+                                    color_mode: 'custom'
+                                    line_color_focus: (1, 1, 1, 1)
+                                    error_color: (207/255.0, 102/255.0, 121/255.0, 1)
+
+                            TwoLineListItem:
+                                MDTextField:
+                                    id: tf_reload_t
+                                    required: True
+                                    mode: 'rectangle'
+                                    hint_text: 'Reload time'
+                                    helper_text: 'please enter a value'
+                                    helper_text_mode: 'on_error'
+                                    pos_hint: {'center_x': 0.3, 'center_y': 0.55}
+                                    size_hint: 0.4, None
+                                    color_mode: 'custom'
+                                    line_color_focus: (1, 1, 1, 1)
+                                    error_color: (207/255.0, 102/255.0, 121/255.0, 1)
+                                
+                                MDTextField:
+                                    id: tf_reload_t_bonus
+                                    mode: 'rectangle'
+                                    hint_text: 'Bonus (%)'
+                                    pos_hint: {'center_x': 0.75, 'center_y': 0.55}
+                                    size_hint: 0.3, None
+                                    color_mode: 'custom'
+                                    line_color_focus: (1, 1, 1, 1)
+                                    error_color: (207/255.0, 102/255.0, 121/255.0, 1)
+
+                            TwoLineListItem:
+                                MDTextField:
+                                    id: tf_mag_size
+                                    required: True
+                                    mode: 'rectangle'
+                                    hint_text: 'Magazine size'
+                                    helper_text: 'please enter a value'
+                                    helper_text_mode: 'on_error'
+                                    pos_hint: {'center_x': 0.5, 'center_y': 0.55}
+                                    size_hint: 0.8, None
+                                    color_mode: 'custom'
+                                    line_color_focus: (1, 1, 1, 1)
+                                    error_color: (207/255.0, 102/255.0, 121/255.0, 1)
+
+                            TwoLineListItem:
+                                MDTextField:
+                                    id: tf_ammo_per_shot
+                                    mode: 'rectangle'
+                                    hint_text: 'Ammo per shot'
+                                    pos_hint: {'center_x': 0.5, 'center_y': 0.55}
+                                    size_hint: 0.8, None
+                                    color_mode: 'custom'
+                                    line_color_focus: (1, 1, 1, 1)
+                                    error_color: (207/255.0, 102/255.0, 121/255.0, 1)
+                                
+                    MDBottomAppBar:
+                        MDToolbar:
+                            id: b_bar
+                            title: ''
+                            mode: 'end'
+                            icon: 'calculator'
+                            icon_color: (187/255.0, 134/255.0, 252/255.0, 1)
+                            md_bg_color: (30/255.0, 30/255.0, 30/255.0, 1)
+                            on_action_button: app.action()
+
+        MDNavigationDrawer:
+            id: nav_drawer
+            BoxLayout:
+                orientation: 'vertical'
+                spacing: '8dp'
+                padding: '8dp'
+
+                MDIconButton:
+                    icon: 'close'
+                    on_press: nav_drawer.set_state('close')
+
+                ScrollView:
+                    MDList:
+                        OneLineAvatarIconListItem:
+                            text: 'Theme'
+                            user_font_size: '48sp'
+                            IconLeftWidget:
+                                icon: 'theme-light-dark'
+                            IconRightWidget:
+                                icon: 'toggle-switch-outline'
+                                user_font_size: '32sp'
+
+                OneLineAvatarListItem:
+                    text: 'GitHub'
+                    on_release: app.github()
+                    IconLeftWidget:
+                        icon: 'github'
