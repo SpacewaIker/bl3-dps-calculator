@@ -1,15 +1,18 @@
+import webbrowser
 from kivymd.app import MDApp
 from calculator import calculate_dps
-from kivy.core.window import Window
+from kivy.lang import Builder
+import sys
 
-size = 35
-Window.size = (size*9, size*16)
+sys.stdout = open('stdout_stderr/stdout.txt', 'w')
+sys.stderr = open('stdout_stderr/stderr.txt', 'w')
 
 
 class DPSCalculatorApp(MDApp):
 
     def build(self):
         self.theme_cls.theme_style = 'Dark'
+        return Builder.load_file('DPSCalculator.kv')
 
     def action(self):
         dps = calculate_dps(
@@ -24,8 +27,9 @@ class DPSCalculatorApp(MDApp):
         )
         self.root.ids.b_bar.title = f'{str(round(dps, 2))} DPS'
 
-    def navigation(self):
-        print('menu was pressed')
+    def github(self):
+        webbrowser.open('https://github.com/SpacewaIker/bl3-dps-calculator',
+                        new=2)
 
     def no_action(self):
         pass
